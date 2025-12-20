@@ -10,6 +10,10 @@ public:
         char second_name[10];
         char tel[15];
 
+        /// @brief Конструктор абонента
+        /// @param _name - имя 
+        /// @param _secondName - фамилия 
+        /// @param _tel - номер телефона
         Abonent(const char* _name = "", const char* _secondName = "", const char* _tel = "")
         {
             std::strcpy(name, _name);
@@ -31,10 +35,20 @@ public:
         delete[] directory;
     }
 
-    Abonent& createAbonent(const char* _name = "", const char* _second_name= "", const char* _tel = "");
+    /// @brief Функция добавления абонента 
+    /// @param abonent - абонент, которого необходимо добавить 
     void addAbonent(Abonent& abonent);
+
+    /// @brief Функция поиска абонента по имени
+    /// @param _name - имя абонента, которого ищем 
+    /// @return возвращает ссылку на найденного абонента 
     Abonent& findAbonentByName(const char* _name) const;
+
+    /// @brief Функция удаления абонента 
+    /// @param abonent - абонент, которого необходимо удалить 
     void deleteAbonent(Abonent& abonent);
+
+    /// @brief Вывести текущую директорию
     void printDirectory() const;
 
     bool isEmpty() const;

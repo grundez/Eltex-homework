@@ -22,11 +22,11 @@ void Directory::deleteAbonent(Abonent &abonent)
     for(int i = 0; i < currentQuantity; ++i){
         if(strcmp(directory[i].tel, abonent.tel) == 0){
             for(int j = i; j < currentQuantity - 1; ++j){
-                directory[j] = directory[j+1];  // delete by mov abonents left after current pos
+                directory[j] = directory[j+1];  // сдвигаем абонентов, тк удалили найденного
             }
             --currentQuantity;
             
-            // delete/clean last abonent, cuz he dooblicated n-1 now (n == n-1)
+            ///< зануляем последнего абонента, тк он дублируется после сдвига 
             directory[currentQuantity].name[0] = '\0';
             directory[currentQuantity].second_name[0] = '\0';
             directory[currentQuantity].tel[0] = '\0';
