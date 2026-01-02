@@ -47,13 +47,10 @@ int main() {
             char name[10];
             std::cout << "Abonent name to delete: "; 
             std::cin >> name;
-            
-            try {
-                Directory::Abonent& found = dir.findAbonentByName(name);
-                dir.deleteAbonent(found);
-            } catch(const std::runtime_error& e) {
-                std::cout << e.what() << std::endl;
-            }
+
+            Directory::Abonent* found = dir.findAbonentByName(name);
+            if(found) dir.deleteAbonent(*found);
+            else std::cout << "Abonent " << name << " not found"; 
             break;
         }
         
@@ -66,12 +63,8 @@ int main() {
             char name[10];
             std::cout << "Abonent name to find: "; 
             std::cin >> name;
-            
-            try {
-                dir.findAbonentByName(name);
-            } catch(const std::runtime_error& e) {
-                std::cout << e.what() << std::endl;
-            }
+            Directory::Abonent* found = dir.findAbonentByName(name);
+            if(!found) std::cout << "Abonent " << name << " not found";
             break;
         }
         

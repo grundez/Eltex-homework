@@ -46,10 +46,10 @@ void Directory::printDirectory() const
     }
 }
 
-Directory::Abonent &Directory::findAbonentByName(const char *_name) const
+Directory::Abonent *Directory::findAbonentByName(const char *_name) const
 {
     if(isEmpty()) {
-        throw std::runtime_error("Directory is empty");
+        return nullptr;
     }
 
     Abonent sameAbonents[MAX_ABONENT];
@@ -70,10 +70,10 @@ Directory::Abonent &Directory::findAbonentByName(const char *_name) const
             std::cout << sameAbonents[i].name << " " 
                     << sameAbonents[i].second_name << " - " << sameAbonents[i].tel << std::endl;
         }
-        return sameAbonents[0];
+        return &sameAbonents[0]; // возврат первого найденного
     }
 
-    throw std::runtime_error("Didnt find abonent");
+    return nullptr;
 }
 
 bool Directory::isFull() const

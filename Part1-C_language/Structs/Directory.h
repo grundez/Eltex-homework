@@ -42,7 +42,7 @@ public:
     /// @brief Функция поиска абонента по имени
     /// @param _name - имя абонента, которого ищем 
     /// @return возвращает ссылку на найденного абонента 
-    Abonent& findAbonentByName(const char* _name) const;
+    Abonent* findAbonentByName(const char* _name) const;
 
     /// @brief Функция удаления абонента 
     /// @param abonent - абонент, которого необходимо удалить 
