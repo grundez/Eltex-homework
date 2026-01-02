@@ -52,25 +52,25 @@ Directory::Abonent *Directory::findAbonentByName(const char *_name) const
         return nullptr;
     }
 
-    Abonent sameAbonents[MAX_ABONENT];
+    int idSameAbonents[MAX_ABONENT];
     int sameAbonentCount = 0;
-    bool isFinded = false;
+    bool isFound = false;
 
     for(int i = 0; i < currentQuantity; ++i){
         if(strcmp(directory[i].name, _name) == 0){
-            isFinded = true;
-            sameAbonents[sameAbonentCount] = directory[i];
-            ++sameAbonentCount;
-            isFinded = true;
+            isFound = true;
+            idSameAbonents[sameAbonentCount] = i;
+            sameAbonentCount++;
         }
     }
-    if(isFinded) {
+
+    if(isFound) {
         std::cout << "\nFinded abonents:" << std::endl;
         for(int i = 0; i < sameAbonentCount; ++i){
-            std::cout << sameAbonents[i].name << " " 
-                    << sameAbonents[i].second_name << " - " << sameAbonents[i].tel << std::endl;
+            std::cout << directory[idSameAbonents[i]].name << " " 
+                    << directory[idSameAbonents[i]].second_name << " - " << directory[idSameAbonents[i]].tel << std::endl;
         }
-        return &sameAbonents[0]; // возврат первого найденного
+        return &directory[idSameAbonents[0]]; // возврат первого найденного
     }
 
     return nullptr;
@@ -84,4 +84,9 @@ bool Directory::isFull() const
 bool Directory::isEmpty() const
 {
     return currentQuantity == 0;
+}
+
+int Directory::getCapacity() const
+{
+    return currentQuantity; 
 }

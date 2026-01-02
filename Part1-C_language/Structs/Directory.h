@@ -41,7 +41,8 @@ public:
 
     /// @brief Функция поиска абонента по имени
     /// @param _name - имя абонента, которого ищем 
-    /// @return возвращает ссылку на найденного абонента 
+    /// @return выводит всех найденых абонентов по заданному имени 
+    ///         и возвращает указатель на первого, иначе - пустой указатель
     Abonent* findAbonentByName(const char* _name) const;
 
     /// @brief Функция удаления абонента 
@@ -53,6 +54,7 @@ public:
 
     bool isEmpty() const;
     bool isFull() const;
+    int getCapacity() const;
 
 private:
     Abonent* directory;
